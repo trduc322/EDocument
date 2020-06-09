@@ -1,0 +1,32 @@
+ <header class ="navbar navbar-fixed-top navbar-inverse">
+ <div class ="container">
+ <%= link_to "sample app", "#", id: "logo" %>
+ <nav>
+  <ul class ="nav navbar-nav navbar-right">
+ <li><%= link_to "Home", "#" %></li>
+ <li><%= link_to "Help", "#" %></li>
+ <%if !current_admin&&!current_user%>
+  <li><%= link_to "Sign Up", sign_up_path%></li>
+<%end%>
+
+  <%if current_admin%>
+<li><%= link_to "Edit", "#"%></li>
+<li><%= link_to "Add Admin", sign_up_admin_path%></li>
+<%end%>
+ 
+
+ <%if current_user %>
+ <li><%= link_to "Log out", log_out_path, method: :delete %></li>
+  <%elsif current_admin %>
+  <li><%= link_to "Log out", log_out_path, method: :delete %></li>
+ <%else%>
+ <li><%= link_to "Log in", log_in_path %></li>
+ <%end%>
+
+
+
+
+ </ul>
+ </nav>
+ </div>
+ </header>

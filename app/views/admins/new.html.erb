@@ -1,0 +1,26 @@
+<%provide :title, "Sign up Admin"%>
+<h1>Sign up Admin</h1>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+<%= form_for @admin, url: admins_path, method: :post do |f|%>
+    
+
+     
+    <%= f.label :adname%>
+    <%= f.text_field :adname%>
+
+    <%= f.label :admail%>
+    <%= f.email_field :admail%>
+
+    <%= f.label :password%>
+    <%= f.password_field :password%>
+
+    <%= f.label :password_confirmation%>
+    <%= f.password_field :password_confirmation%>
+
+    <%= f.submit "create my admin account", class: "btn btn-primary"%>
+<%end%>
+</div>
+</div>
