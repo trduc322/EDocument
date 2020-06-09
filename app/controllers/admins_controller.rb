@@ -10,6 +10,7 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @admin = Admin.find_by id: params[:id]
   end
 
   # GET /admins/new
@@ -66,6 +67,6 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      params.require(:admin).permit(:adname, :admail,:password,:password_confirmation)
+      params.require(:admin).permit(:adname, :admail, :password, :password_confirmation)
     end
 end

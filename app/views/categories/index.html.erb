@@ -1,3 +1,7 @@
+<%if current_user%>
+<h1>NIGGA CUT</h1>
+<%elsif current_admin%>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
@@ -25,3 +29,4 @@
 <br>
 
 <%= link_to 'New Category', new_category_path %>
+<%end%>

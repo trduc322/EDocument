@@ -1,22 +1,26 @@
  <header class ="navbar navbar-fixed-top navbar-inverse">
  <div class ="container">
- <%= link_to "sample app", "#", id: "logo" %>
+ <%= link_to "E-Document", root_path, id: "logo" %>
  <nav>
   <ul class ="nav navbar-nav navbar-right">
- <li><%= link_to "Home", "#" %></li>
- <li><%= link_to "Help", "#" %></li>
+ <li><%= link_to "Home", root_path %></li>
+ 
  <%if !current_admin&&!current_user%>
   <li><%= link_to "Sign Up", sign_up_path%></li>
 <%end%>
 
   <%if current_admin%>
-<li><%= link_to "Edit", "#"%></li>
+<li><%= link_to "My Account", @current_admin %></li>
 <li><%= link_to "Add Admin", sign_up_admin_path%></li>
+<li><%= link_to "View Category", categories_path%></li>
+<li><%= link_to "View User", users_path%></li>
 <%end%>
  
 
  <%if current_user %>
+ <li><%= link_to "My Account", @current_user %></li>
  <li><%= link_to "Log out", log_out_path, method: :delete %></li>
+
   <%elsif current_admin %>
   <li><%= link_to "Log out", log_out_path, method: :delete %></li>
  <%else%>

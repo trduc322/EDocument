@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
   resources :admins
+  get '/users', to: "users#index"
   get '/sign_up_admin', to: "admins#new"
   get '/log_in', to: "session#new"
   post '/log_in', to: "session#create"
   delete'log_out',to: "session#destroy"
+ 
 
   resources :categories
+  get '/categories', to: "categories#index"
+
+
   get 'session/new'
   get 'stactic_pages/home'
   get 'stactic_pages/help'
-
   root 'stactic_pages#home'
-  get '/about', to:"stactic_pages#about" 
+  get '/about', to:"stactic_pages#about"
+  
+
   resources :users
   get '/sign_up', to: "users#new"
- 
   get '/log_in', to: "session#new"
   post '/log_in', to: "session#create"
   delete'log_out',to: "session#destroy"
