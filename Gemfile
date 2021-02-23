@@ -53,3 +53,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
+
+gem 'paint'
+
+gem 'active_storage_validations', '0.8.2'
+gem 'will_paginate', '~> 3.1.0'
+gem 'faker'

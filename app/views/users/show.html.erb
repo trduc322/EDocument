@@ -18,13 +18,34 @@
 </p>
 
 <p>
-  <strong>Dlerr:</strong>
+  <strong>Upload error:</strong>
   <%= @user.DLerr %>
 </p>
 
+<%if current_user? @user%>
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', :back %>
+
+<%= render "shared/edocs_form"%>
+
+
+
+  <%end%>
 
 </section>
 </aside>
+
+
+  <div class="col-md-8">
+  <h3>Document Feed</h3>
+
+  <%if @e_docs.any?%>
+    <ol class = "e_docs">
+      <%= render @e_docs %>
+     
+    </ol>
+    <%end%>
+  </div>
+
+
 </div>

@@ -1,0 +1,33 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>E Docs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th>File</th>
+      <th>Docname</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @e_docs.each do |e_doc| %>
+      <tr>
+        <td><%= e_doc.user.name %></td>
+        <td><%= e_doc.category.categoryname %></td>x 
+        <td><%= e_doc.docname %></td>
+        <td><%= e_doc.description %></td>
+        <td><%= link_to 'Show', e_doc %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

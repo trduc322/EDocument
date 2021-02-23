@@ -1,0 +1,25 @@
+<li id="<%= e_doc.id %>">
+ <%= link_to gravatar_for(e_doc.user, size: 50), e_doc.user %>
+ <span class="user"><%= link_to e_doc.user.name, e_doc.user %></span>
+
+ <span class="content"><%=link_to e_doc.docname, e_doc %></span>
+ <span class="timestamp">
+ Posted <%= time_ago_in_words e_doc.created_at %> ago.
+ <% e_doc.user %>
+ <%if current_user? e_doc.user%>
+ <%= link_to "delete",e_doc, method: :delete, data: {confirm: "You sure?"} %>
+ <%= link_to 'edit', edit_e_doc_path(e_doc.id) %>
+
+
+<%end%>
+ <%if current_admin%>
+ <%= link_to "delete",e_doc, method: :delete, data: {confirm: "You sure?"} %>
+
+
+<%end%>
+<%if current_user%>
+<%= link_to 'download',download_path(e_doc.id)%>
+
+<%end%>
+ </span>
+</li>

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>E doc</th>
+      <th>Download</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @histories.each do |history| %>
+      <tr>
+        <td><%= history.user.name %></td>
+        <td><%= history.e_doc.docname %></td>
+        <td><%= history.dload %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

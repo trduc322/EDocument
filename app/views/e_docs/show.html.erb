@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+<aside class="col-md-4">
+<p>
+  <strong>User:</strong>
+  <%= @e_doc.user.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @e_doc.category.categoryname %>
+</p>
+
+
+<p>
+  <strong>Docname:</strong>
+  <%= @e_doc.docname %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @e_doc.description %>
+</p>
+<%@user = User.find_by id: @e_doc.user_id%>
+<%if current_user? @user%>
+<%= link_to 'Edit', edit_e_doc_path(@e_doc) %> |
+<%= link_to 'Back', e_docs_path %>
+
+<%end%>
+<%if current_user%>
+<%= render "shared/comments_form"%>
+<%end%>
+</section>
+</aside>
+
+
+  <div class="col-md-8">
+  <h3>Comments</h3>
+
+  <%if @comments.any?%>
+    <ol class = "comments">
+      <%= render @comments %>
+     
+    </ol>
+    <%end%>
+  </div>
+    </div>
+

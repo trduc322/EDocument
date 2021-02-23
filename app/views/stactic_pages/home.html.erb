@@ -1,7 +1,32 @@
 <% provide :title, "Home" %>
 <h1>E-Document</h1>
-<p>
+
+<%# <p>
  This is the home page for the
  <a href="http://www.google.com/">http://www.google.com/</a>
  E-Document.
-</p>
+</p> %>
+
+
+<%@categories = Category.all%>
+<%= form_tag(e_docs_path, method: :get) do %>
+<%= text_field_tag :docname %>
+
+<%=submit_tag 'Search'%>
+<%end%>
+
+
+
+
+
+ <div class="row">
+
+ </section>
+ </aside>
+ <div class="col-md-8">
+ <h3>Document Feed</h3>
+ <%= render "shared/feed" %>
+ </div>
+ </div>
+
+

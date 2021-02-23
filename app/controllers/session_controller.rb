@@ -7,6 +7,7 @@ class SessionController < ApplicationController
   def create
     @user = User.find_by email: params[:session][:email].downcase
     @admin = Admin.find_by admail: params[:session][:email].downcase
+    
     if @user.present?
       if @user.authenticate(params[:session][:password])
       login_user @user

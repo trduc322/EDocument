@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /users
   # GET /users.json
@@ -11,6 +12,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by id: params[:id]
+    @e_docs = @user.e_docs.paginate page: params[:page]
+    @e_doc = @user.e_docs.new
+
   end
 
   # GET /users/new
@@ -26,9 +30,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new user_params
+    @user.coin = 0
+    @user.DLerr = 0
         if @user.save
             flash[:success]="create account success!"
-            redirect_to @user
+            redirect_to root_path
         else
             flash.now[:danger]="create account fail!!!"
             render :new
@@ -59,6 +65,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def userfeed 
+    if login?
+    @e_doc = current_user.e_docs.build
+    @feed_items = current_user.userfeed.paginate page: params[:page]
+    end
+  end
+
+  
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -69,4 +86,11 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name,:email,:password,:password_confirmation)
     end
+
+    def Coin
+      @user = current_user
+      @user.coin -= 10
+      @user.save
+    end
+
 end

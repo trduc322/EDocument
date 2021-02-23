@@ -1,0 +1,13 @@
+
+
+
+<%= form_for @comment do |f| %>
+
+<div class="field">
+<%= f.hidden_field :e_doc_id%>
+ <%= f.text_field :content, placeholder: "Write your comment here ..." %>
+ </div>
+ 
+ <%= f.submit "Upload", class: "btn btn-primary" %>
+ 
+<% end %>

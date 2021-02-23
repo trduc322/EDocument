@@ -1,0 +1,21 @@
+<li id="<%= comment.id %>">
+ 
+ <span class="user"><%= link_to comment.e_doc.user.name, comment.e_doc.user %></span>
+ <span class="content"><%= comment.content%></span>
+ <span class="timestamp">
+ Posted <%= time_ago_in_words comment.created_at %> ago.
+ <% comment.e_doc %>
+ <%if current_user? comment.e_doc.user%>
+ <%= link_to "delete",comment, method: :delete, data: {confirm: "You sure?"} %>
+<%= link_to 'edit', edit_comment_path(comment.id) %>
+<%end%>
+ <%if current_admin%>
+ <%= link_to "delete",comment, method: :delete, data: {confirm: "You sure?"} %>
+
+
+<%end%>
+<%#if current_user%>
+<%#= link_to 'download',download_path(e_doc.id)%>
+<%#end%>
+ </span>
+</li>
